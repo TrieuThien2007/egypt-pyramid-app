@@ -187,6 +187,7 @@ public class EgyptianPyramidsAppExample {
 
     for (int i = 0; i < pyramidArray.length; i++) {
       if (pyramidArray[i].id.equals(id)) {
+        addRequestedPyramid(pyramidArray[i]);
         Integer totalContribution = 0;
 
         printMenuLine();
@@ -214,6 +215,16 @@ public class EgyptianPyramidsAppExample {
 
     System.out.println("ERROR: Pyramid not found");
   }
+
+  private void addRequestedPyramid(Pyramid pyramid) {
+    for (int i = 0; i < requestedPyramids.size(); i++) {
+        if (requestedPyramids.get(i).id.equals(pyramid.id)) {
+            return;
+        }
+    }
+
+    requestedPyramids.add(pyramid);
+}
 
   private Boolean executeCommand(Scanner scan, Character command) {
     Boolean success = true;
