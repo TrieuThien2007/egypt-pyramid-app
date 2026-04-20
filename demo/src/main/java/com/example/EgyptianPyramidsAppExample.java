@@ -143,8 +143,21 @@ public class EgyptianPyramidsAppExample {
             return;
         }
     }
-
     System.out.println("ERROR: Pharaoh not found");
+}
+private void printAllPyramids() {
+    for (int i = 0; i < pyramidArray.length; i++) {
+        printMenuLine();
+        System.out.printf("Pyramid %s\n", pyramidArray[i].name);
+        System.out.printf("\tid: %d\n", pyramidArray[i].id);
+
+        System.out.println("\tcontributors:");
+        for (int j = 0; j < pyramidArray[i].contributors.length; j++) {
+            System.out.printf("\t- %s\n", pyramidArray[i].contributors[j]);
+        }
+
+        printMenuLine();
+    }
 }
 
   private Boolean executeCommand(Scanner scan, Character command) {
@@ -156,6 +169,9 @@ public class EgyptianPyramidsAppExample {
         break;
         case '2':
     printSpecificPharaoh(scan, pharaohArray);
+    break;
+    case '3':
+    printAllPyramids();
     break;
       case 'q':
         System.out.println("Thank you for using Nassef's Egyptian Pyramid App!");
