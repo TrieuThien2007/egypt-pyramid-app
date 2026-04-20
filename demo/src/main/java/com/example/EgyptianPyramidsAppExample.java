@@ -218,13 +218,29 @@ public class EgyptianPyramidsAppExample {
 
   private void addRequestedPyramid(Pyramid pyramid) {
     for (int i = 0; i < requestedPyramids.size(); i++) {
-        if (requestedPyramids.get(i).id.equals(pyramid.id)) {
-            return;
-        }
+      if (requestedPyramids.get(i).id.equals(pyramid.id)) {
+        return;
+      }
     }
 
     requestedPyramids.add(pyramid);
-}
+  }
+
+  private void printRequestedPyramids() {
+    printMenuLine();
+    System.out.println("List of requested pyramids");
+    System.out.println("\tId\tName");
+    System.out.println("\t---\t----------------");
+
+    for (int i = 0; i < requestedPyramids.size(); i++) {
+      System.out.printf(
+          "\t%d\t%s\n",
+          requestedPyramids.get(i).id,
+          requestedPyramids.get(i).name);
+    }
+
+    printMenuLine();
+  }
 
   private Boolean executeCommand(Scanner scan, Character command) {
     Boolean success = true;
@@ -244,6 +260,9 @@ public class EgyptianPyramidsAppExample {
         break;
       case 'q':
         System.out.println("Thank you for using Nassef's Egyptian Pyramid App!");
+        break;
+      case '5':
+        printRequestedPyramids();
         break;
       default:
         System.out.println("ERROR: Unknown commmand");
