@@ -181,6 +181,41 @@ private void printAllPyramids() {
     }
 }
 
+private void printSpecificPyramid(Scanner scan) {
+    System.out.print("Enter the id of the pyramid: ");
+    Integer id = Integer.parseInt(scan.nextLine());
+
+    for (int i = 0; i < pyramidArray.length; i++) {
+        if (pyramidArray[i].id.equals(id)) {
+            Integer totalContribution = 0;
+
+            printMenuLine();
+            System.out.printf("Pyramid %s\n", pyramidArray[i].name);
+            System.out.printf("\tid: %d\n", pyramidArray[i].id);
+
+            for (int j = 0; j < pyramidArray[i].contributors.length; j++) {
+                Pharaoh contributor = findPharaohByHieroglyphic(pyramidArray[i].contributors[j]);
+
+                if (contributor != null) {
+                    System.out.printf(
+                        "\tcontributor %d: %s %d gold coins\n",
+                        j + 1,
+                        contributor.name,
+                        contributor.contribution
+                    );
+                    totalContribution += contributor.contribution;
+                }
+            }
+
+            System.out.printf("\ttotal contribution: %d gold coins\n", totalContribution);
+            printMenuLine();
+            return;
+        }
+    }
+
+    System.out.println("ERROR: Pyramid not found");
+}
+
   private Boolean executeCommand(Scanner scan, Character command) {
     Boolean success = true;
 
@@ -193,6 +228,9 @@ private void printAllPyramids() {
     break;
     case '3':
     printAllPyramids();
+    break;
+    case '4':
+    printSpecificPyramid(scan);
     break;
       case 'q':
         System.out.println("Thank you for using Nassef's Egyptian Pyramid App!");
