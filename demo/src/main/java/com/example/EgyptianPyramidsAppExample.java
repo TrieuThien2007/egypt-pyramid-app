@@ -156,15 +156,27 @@ private Pharaoh findPharaohByHieroglyphic(String hieroglyphic) {
 }
 private void printAllPyramids() {
     for (int i = 0; i < pyramidArray.length; i++) {
+        Integer totalContribution = 0;
+
         printMenuLine();
         System.out.printf("Pyramid %s\n", pyramidArray[i].name);
         System.out.printf("\tid: %d\n", pyramidArray[i].id);
 
-        System.out.println("\tcontributors:");
         for (int j = 0; j < pyramidArray[i].contributors.length; j++) {
-            System.out.printf("\t- %s\n", pyramidArray[i].contributors[j]);
+            Pharaoh contributor = findPharaohByHieroglyphic(pyramidArray[i].contributors[j]);
+
+            if (contributor != null) {
+                System.out.printf(
+                    "\tcontributor %d: %s %d gold coins\n",
+                    j + 1,
+                    contributor.name,
+                    contributor.contribution
+                );
+                totalContribution += contributor.contribution;
+            }
         }
 
+        System.out.printf("\ttotal contribution: %d gold coins\n", totalContribution);
         printMenuLine();
     }
 }
