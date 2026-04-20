@@ -36,7 +36,7 @@ public class EgyptianPyramidsAppExample {
   public EgyptianPyramidsAppExample() {
     // read egyptian pharaohs
     String pharaohFile =
-      "/Users/jerom/Documents/GitHub/class-java/egyptian-pyramids/demo/src/main/java/com/egyptianExample/pharaoh.json";
+      "F:\\egypt-pyramid-app\\demo\\src\\main\\resources\\pharaoh.json";
     JSONArray pharaohJSONArray = JSONFile.readArray(pharaohFile);
 
     // create and intialize the pharaoh array
@@ -44,7 +44,7 @@ public class EgyptianPyramidsAppExample {
 
     // read pyramids
     String pyramidFile =
-      "/Users/jerom/Documents/GitHub/class-java/egyptian-pyramids/demo/src/main/java/com/egyptian/pyramid.json";
+      "F:\\egypt-pyramid-app\\demo\\src\\main\\resources\\pyramid.json";
     JSONArray pyramidJSONArray = JSONFile.readArray(pyramidFile);
 
     // create and initialize the pyramid array
