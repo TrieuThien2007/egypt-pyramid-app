@@ -145,6 +145,15 @@ public class EgyptianPyramidsAppExample {
     }
     System.out.println("ERROR: Pharaoh not found");
 }
+
+private Pharaoh findPharaohByHieroglyphic(String hieroglyphic) {
+    for (int i = 0; i < pharaohArray.length; i++) {
+        if (pharaohArray[i].hieroglyphic.equals(hieroglyphic)) {
+            return pharaohArray[i];
+        }
+    }
+    return null;
+}
 private void printAllPyramids() {
     for (int i = 0; i < pyramidArray.length; i++) {
         printMenuLine();
